@@ -57,14 +57,14 @@ export function Register() {
   }
 
   return (
-    <div style={{ "margin-top": "10px" }}>
+    <div style={{ "marginTop": "10px" }}>
       <h2>SingUp</h2>
       <Form>
         <FormGroup>
           <Label>First Name</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="String"
               placeholder="Enter First Name"
@@ -86,7 +86,7 @@ export function Register() {
           <Label>Last Name</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="string"
               placeholder="Enter Last Name"
@@ -108,7 +108,7 @@ export function Register() {
           <Label>Email</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="gmail"
               placeholder="Enter Your Gmail ID"
@@ -153,7 +153,7 @@ export function Register() {
           <Label>Password</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="password"
               placeholder="Enter Password"
@@ -175,7 +175,7 @@ export function Register() {
           <Label>Retype Password</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="password"
               placeholder="ReEnter Password"

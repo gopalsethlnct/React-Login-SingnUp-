@@ -2,25 +2,22 @@ import React, { useReducer } from "react";
 import { Form, Button, FormGroup, Label, Input } from "reactstrap";
 
 export default function Login(props) {
-
   const initialstate = {
     email: "",
     password: "",
-   
   };
 
   function reduce(state, action) {
     const { type, payload } = action;
     switch (type) {
-     
       case "setEmail": {
         return { ...state, email: payload };
       }
-     
+
       case "setPassword": {
         return { ...state, password: payload };
       }
-      
+
       default:
         return state;
     }
@@ -29,16 +26,12 @@ export default function Login(props) {
   function clearEmail() {
     dispatch({ type: "setEmail", payload: "" });
   }
- //console.log(state);
+  //console.log(state);
 
   function clearPassword() {
     dispatch({ type: "setPassword", payload: "" });
   }
- 
 
-
-
-  
   function validateUser(e) {
     fetch("https://reqres.in/api/login", {
       method: "POST", // or 'PUT'
@@ -55,7 +48,8 @@ export default function Login(props) {
         console.log("Success:", data.error);
         if (data.error === "user not found") {
           alert("Bad Credential");
-        } else props.setLogin();
+        } else;
+        props.setLogin();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -69,18 +63,18 @@ export default function Login(props) {
   }
 
   return (
-    <div style={{marginTop: "50px" }}>
+    <div style={{ marginTop: "50px" }}>
       <h2>Login Details</h2>
       <Form
         onSubmit={(e) => {
           validateUser(e);
         }}
       >
-       <FormGroup>
+        <FormGroup>
           <Label>Email</Label>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Input
-              style={{marginRight: "5px" }}
+              style={{ marginRight: "5px" }}
               className="text-center"
               type="gmail"
               placeholder="Enter Your Gmail ID"
@@ -100,25 +94,25 @@ export default function Login(props) {
         </FormGroup>
         <FormGroup>
           <Label>Password</Label>
-          <div style={{ display: "flex", flexDirection: "row" }}> 
-          <Input
-           style={{marginRight: "5px" }}
-            className="text-center"
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            id="password"
-            value={state.password}
-            onChange={(e) => {
-              dispatch({
-                type: "setPassword",
-                payload: e.target.value,
-              });
-            }}
-            required
-          />
-          <Button onClick={clearPassword}>&times;</Button>
-        </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Input
+              style={{ marginRight: "5px" }}
+              className="text-center"
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              id="password"
+              value={state.password}
+              onChange={(e) => {
+                dispatch({
+                  type: "setPassword",
+                  payload: e.target.value,
+                });
+              }}
+              required
+            />
+            <Button onClick={clearPassword}>&times;</Button>
+          </div>
         </FormGroup>
         <Button outline color="success" type="submit">
           Login
@@ -128,17 +122,17 @@ export default function Login(props) {
           color="warning"
           style={{ margin: "10px 10px" }}
           type="reset"
-          onClick={()=>{
-            clearPassword()
-             clearEmail()
-            }}
+          onClick={() => {
+            clearPassword();
+            clearEmail();
+          }}
         >
           Reset
         </Button>
       </Form>
     </div>
   );
-} 
+}
 // {
 //   "email": "eve.holt@reqres.in",
 //   "password": "cityslicka"

@@ -1,19 +1,30 @@
-import { Card, CardBody, CardText, CardTitle, Container } from "reactstrap";
+import { Card, CardBody, CardText, CardTitle} from "reactstrap";
 export function User(props) {
-    return (
-        <div>
-            <Card>
-                <CardBody>
-                    <CardTitle>{props.first_name}&nbsp;&nbsp;&nbsp;{props.first_name}</CardTitle>
-
-                    <Container>
-                        <img width="10%" src={props.avatar} alt="Card cap" />
-                    </Container>
-                </CardBody >
-                <CardBody>
-                    <CardText>{props.email}</CardText>
-                </CardBody>
-            </Card>
-        </div>
-    );
-};
+  return (
+    <div>
+      <Card>
+        <CardBody>
+          <CardTitle>{props.name}</CardTitle>
+          <CardText>{props.email}</CardText>
+          <CardText>{props.phone}</CardText>
+        </CardBody>
+        <CardBody
+          style={{
+            marginLeft:"400px",
+            display: "flex",
+            justifyContent: "space-evenly",
+            width: "700px",
+          }}
+        >
+          <CardText>{props.address.street}</CardText>
+          <CardText>{props.address.suite}</CardText>
+          <CardText>{props.address.city}</CardText>
+          <CardText>{props.address.zipcode}</CardText>
+        </CardBody>
+        <CardBody>
+          <CardText>{props.website}</CardText>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
