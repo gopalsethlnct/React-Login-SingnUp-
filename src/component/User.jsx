@@ -1,30 +1,40 @@
-import { Card, CardBody, CardText, CardTitle} from "reactstrap";
+import { useState } from "react/cjs/react.development";
+import { Button, Card, CardBody, CardText, CardTitle, Container } from "reactstrap";
+import { UserDetails } from "./user Detail";
 export function User(props) {
+  const [curr, setCurr] = useState(true);
+function togle(){
+  if(curr===false)
+  setCurr(true);
+  else
+  setCurr(false);
+}
   return (
-    <div>
-      <Card>
-        <CardBody>
-          <CardTitle>{props.name}</CardTitle>
-          <CardText>{props.email}</CardText>
-          <CardText>{props.phone}</CardText>
-        </CardBody>
-        <CardBody
-          style={{
-            marginLeft:"400px",
-            display: "flex",
-            justifyContent: "space-evenly",
-            width: "700px",
-          }}
-        >
-          <CardText>{props.address.street}</CardText>
-          <CardText>{props.address.suite}</CardText>
-          <CardText>{props.address.city}</CardText>
-          <CardText>{props.address.zipcode}</CardText>
-        </CardBody>
-        <CardBody>
-          <CardText>{props.website}</CardText>
-        </CardBody>
-      </Card>
+    <div style={{margin:"4px"}} >
+        <Container>
+          <Card>
+            <CardBody>
+              <CardTitle>Name: {props.name}</CardTitle>
+              <CardText>Email: {props.email}</CardText>
+            </CardBody>
+      {curr ? (
+        <Button onClick={() => {
+          togle();
+        }}>Show More...</Button>
+        
+        ) : (
+          <UserDetails
+          name={props.name}
+          email={props.email}
+          address={props.address}
+          phone={props.phone}
+          company={props.company}
+          website={props.website}
+          togle={togle}
+          />
+          )}
+          </Card>
+          </Container>
     </div>
   );
 }

@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userDataInitiate, userDataSuccess } from "../reduxUser/users/action";
 import { HomePage } from "./HomePage";
 import { User } from "./User";
 
 export default function Home() {
-  const [user, setUser] = useState([]);
+  //const [user, setUser] = useState([]);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setUser(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    (() => {
+      dispatch(userDataInitiate());
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res) => res.json())
+        .then((res) => dispatch(userDataSuccess(res)));
+      // .catch(err) => userDataFailure(err))
+    })();
   }, []);
   let [showPage, setShowPage] = useState(true);
 
   function setlogin() {
     setShowPage(false);
   }
+  // console.log(user);
   return (
     <div>
       {showPage ? (
         <HomePage setLogin={setlogin} />
       ) : (
-        user?.map((people) => {
+        user.userData.map((people) => {
           return (
             <User
               name={people.name}
