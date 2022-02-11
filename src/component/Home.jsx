@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { userDataInitiate, userDataSuccess } from "../reduxUser/users/action";
+import { userActionConstants } from "../reduxUser/users/actionTypes";
 import { HomePage } from "./HomePage";
+import { MyNavbar } from "./MyNavbar";
 import { User } from "./User";
 
 export default function Home() {
@@ -9,38 +12,48 @@ export default function Home() {
   const user = useSelector((state) => state.user);
   
   useEffect(() => {
-    (() => {
+    
       dispatch(userDataInitiate());
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((res) => res.json())
-        .then((res) => dispatch(userDataSuccess(res)));
-      // .catch(err) => userDataFailure(err))
-    })();
+      console.log(userActionConstants.USER_DATA)
+      dispatch({type:userActionConstants.USER_DATA});
+      // fetch("https://jsonplaceholder.typicode.com/users")
+      //   .then((res) => res.json())
+      //   .then((res) => dispatch(userDataSuccess(res)));
+      // // .catch(err) => userDataFailure(err))
+
+
   }, []);
+  console.log(user.data);
   let [showPage, setShowPage] = useState(true);
 
   function setlogin() {
     setShowPage(false);
   }
-  // console.log(user);
+  console.log(user.userData.data);
   return (
-    <div style={{margin:"40px"}}>
+    <div style={{margin:"0px"}}>
+      <div>
+
+      <MyNavbar/>
+      </div>
+    <div>
       {showPage ? (
         <HomePage setLogin={setlogin} />
-      ) : (
-        user.userData.map((people) => {
-          return (
-            <User
+        ) : (
+          user.userData.data&& user.userData.data.map((people) => {
+            return (
+              <User
               name={people.name}
               email={people.email}
               address={people.address}
               phone={people.phone}
               company={people.company}
               website={people.website}
-            />
-          );
-        })
-      )}
+              />
+              );
+            })
+            )}
+            </div>
     </div>
   );
 }
