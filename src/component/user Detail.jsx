@@ -10,10 +10,8 @@ export function UserDetails(props) {
       </CardBody>
       <CardBody
         style={{
-          marginLeft: "400px",
+          marginLeft: "500px",
           display: "flex",
-          justifyContent: "space-evenly",
-          width: "700px",
         }}
       >
         <CardText>Address: {props.address.street}</CardText>

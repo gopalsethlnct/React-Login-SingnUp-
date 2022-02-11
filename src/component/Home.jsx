@@ -5,7 +5,6 @@ import { HomePage } from "./HomePage";
 import { User } from "./User";
 
 export default function Home() {
-  //const [user, setUser] = useState([]);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   
@@ -25,7 +24,7 @@ export default function Home() {
   }
   // console.log(user);
   return (
-    <div>
+    <div style={{margin:"40px"}}>
       {showPage ? (
         <HomePage setLogin={setlogin} />
       ) : (

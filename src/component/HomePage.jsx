@@ -1,42 +1,58 @@
-import { Container, Col, Row, Button } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
 import Login from "./Login";
 
 import { Register } from "./Register";
 import { useState } from "react/cjs/react.development";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 export function HomePage(props) {
   const [state, setState] = useState(false);
 
   return (
-    <div className="Login" style={{ background: "white", margin: "65px" }}>
+    <div className="Login" style={{ background: "white"}}>
+      <BrowserRouter>
       <Container>
-        <div style={{ margin: "0px" }} color="white">
+        <div  color="white">
           <Row>
             <Col md={6}>
               <div>
-                <Button
+                <Link
                   style={{ margin: "5px", background: "lightgreen" }}
                   className="list-group-item  list-group-item-action"
-                  onClick={() => setState(true)}
-                >
+                  tag="a"
+                  to="/login"
+                  >
                   Login
-                </Button>
+                </Link>
+               
               </div>
             </Col>
             <Col md={6}>
-              <Button
+              <Link
                 style={{ margin: "5px", background: "grey" }}
                 className="list-group-item  list-group-item-action"
-                onClick={() => setState(false)}
-              >
+                tag="a"
+                to="/register"
+                >
                 SingUp
-              </Button>
+              </Link>
             </Col>
           </Row>
         </div>
-
-        {state ? <Login setLogin={props.setLogin} /> : <Register />}
+        <Routes>
+                <Route
+                  path="/login"
+                  element={<Login setLogin={props.setLogin} />}
+                  exact
+                  />
+                <Route path="/register" element={<Register />} exact />
+             
+                {/* <Route path="/login" element={<Login/>} exact /> */}
+              </Routes>
+        {/* {state ? <Login setLogin={props.setLogin} /> : <Register />} */}
       </Container>
+
+                  </BrowserRouter>
     </div>
   );
 }

@@ -10,7 +10,7 @@ function togle(){
   setCurr(false);
 }
   return (
-    <div style={{margin:"4px"}} >
+    <div style={{margin:"20px"}} >
         <Container>
           <Card>
             <CardBody>

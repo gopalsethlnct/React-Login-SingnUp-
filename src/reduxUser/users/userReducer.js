@@ -9,7 +9,7 @@ const intialState = {
 const userReducer = (state = intialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case userActionConstants.USERS_DATA_INITIATE: {
+    case userActionConstants.DATA_INITIATE: {
       return {
         ...state,
         loader: true,
@@ -17,8 +17,8 @@ const userReducer = (state = intialState, action) => {
         error: ""
       };
     }
-    case userActionConstants.USERS_DATA_SUCCESS: {
-      console.log(payload);
+    case userActionConstants.DATA_SUCCESS: {
+     
       return {
         ...state,
         loader: false,
@@ -26,7 +26,7 @@ const userReducer = (state = intialState, action) => {
       };
     }
 
-    case userActionConstants.USERS_DATA_FAILURE: {
+    case userActionConstants.DATA_FAILURE: {
       return {
         ...state,
         loader: false,

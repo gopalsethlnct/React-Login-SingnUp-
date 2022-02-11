@@ -63,7 +63,7 @@ export default function Login(props) {
   }
 
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "50px"}}>
       <h2>Login Details</h2>
       <Form
         onSubmit={(e) => {

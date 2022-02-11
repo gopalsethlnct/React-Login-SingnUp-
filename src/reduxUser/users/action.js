@@ -1,15 +1,15 @@
 import { userActionConstants } from "./actionTypes";
 
 export const userDataInitiate = () => ({
-  type: userActionConstants.USERS_DATA_INITIATE
+  type: userActionConstants.DATA_INITIATE
 });
 
 export const userDataSuccess = (data) => ({
-  type: userActionConstants.USERS_DATA_SUCCESS,
+  type: userActionConstants.DATA_SUCCESS,
   payload: data
 });
 
 export const userDataFailure = (error) => ({
-  type: userActionConstants.USERS_DATA_FAILURE,
+  type: userActionConstants.DATA_FAILURE,
   payload: error
 });
